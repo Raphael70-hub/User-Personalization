@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>News Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="imageslogo.png/">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,200&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/newFeed_styles.css">
+  </head>
+  <style>
+    :root {
+        --themeColor1: <%=themeColor1%>;
+        --themeColor2: <%=themeColor2%>;
+        --themeColor3: <%=themeColor3%>;
+        --carouselControlColor: url(<%=carouselControlColor%>);
+
+        --font: <%=font%>;
+        --fontSize: <%=fontSize%>;
+        --font_family: <%=font_family%>;
+    }
+
+    *  p{
+      font-family: var(--font_family) !important;
+      font-size: var(--fontSize) !important;
+    }
+
+    .navbar-nav li a{
+        font-weight: 900 !important;
+        color: var(--themeColor3) !important;
+    }
+
+
+    .active, .navbar a:hover{
+        color: white;
+    }
+
+    .btn{
+        background-color: var(--themeColor3) !important;
+        color: white;
+    }
+
+    .border{
+        border: 10px solid var(--themeColor2) !important;
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    .noUnderline{
+        text-decoration: none !important;
+        color: grey;
+    }
+
+    .carousel-control-prev-icon { 
+      background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"); 
+    }
+
+    .carousel-control-next-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+    }
+
+    .carousel-item:first-child{
+        background-image: var(--slideImage1);
+        background-color: black;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    .carousel-item:nth-child(2){
+        background-image: var(--slideImage2);
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+
+    .carousel-item:last-child{
+        background-image: var(--slideImage3);
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .parent {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+
+    .image1 {
+      position: relative;
+      top: 0;
+      left: 0;
+      border: 5px solid var(--themeColor3);
+      border-radius: 10%;
+    }
+
+    .colorBorder {
+      border: 5px solid var(--themeColor3);
+      border-radius: 10%;
+    }
+
+    .image2 {
+      position: absolute;
+      top: 30px;
+      left: 50px;
+    }
+
+    .about-service{
+      border-radius: 5%;
+      font-family: 'Raleway', sans-serif;
+      padding: 3rem;
+      color: #fff;
+      background-color: var(--themeColor2);
+    }
+
+    footer{
+        color: white;
+        background-color: var(--themeColor1);
+        padding: 2rem 7rem;
+    }
+
+    footer p, footer li{
+        font-size: small;
+    }
+
+    .footer-image-link{
+        color: white;
+    }
+
+    .theme3Color{
+      color: var(--themeColor2);
+    }
+
+    @media screen and (max-width: 991px) {
+    .carousel-caption{
+      visibility: hidden;
+    }
+    .carousel-item{
+        height: 250px;
+    }  
+    .carousel-item:first-child{
+      background-image: var(--slideImage1);
+      background-repeat: no-repeat;
+    }
+
+    .carousel-item:nth-child(2){
+        background-image: var(--slideImage2);
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    .carousel-item:nth-child(3){
+        background-image: var(--slideImage3);
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    }
+
+  </style>
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-lg" style="background-color: var(--themeColor1);">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src="images/logo.png" class="logo" alt="logo"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <i class="fa-solid fa-bars navbar-icon"></i>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa-solid fa-user dropdown-icon"></i><%=username%>
+                    </a>
+                    <!-- <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user dropdown-icon"></i> My Account</a></li>
+                      <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-box dropdown-icon"></i> Logout</a></li> -->
+                    </ul>
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <main>
+        <div class="all-categories text-center">
+            <hr class="half-hr"> <h2 class="category-heading theme3Color">All News</h2> <hr class="half-hr">
+        </div>
+
+        <div class="container py-3">
+            <form action="/search" method="post">
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" name="q" aria-label="Sizing example input" placeholder="Search" aria-describedby="inputGroup-sizing-lg">
+                    <span class="input-group-text" id="inputGroup-sizing-lg"><button type="submit" class="btn btn-primary">Search</button></span>
+                  </div>
+            </form>
+        </div>
+
+        
+
+    
+        <div class="ms-4">
+            <div class="row">
+              <% allNews.forEach((item, index) => { %>
+                <div class="card mx-3 my-3" style="width: 18rem;">
+                  <img src="<%= item.urlToImage %>" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= item.title %></h5>
+                    <p class="card-text"><%= item.description %></p>
+                    <p class="card-text">Author: <%= item.author %></p>
+                    <a href="<%= item.url %>" target="_blank" class="btn btn-primary">View</a>
+                    <p class="card-text"><%= item.publishedAt %></p>
+                  </div>
+                </div>
+              <% }) %>
+              
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+      <div class="container row">
+        <div class="col-lg-4 mb-4">
+          <img src="images/logo.png" class="logo footer-logo mb-5" alt="logo">
+          <i class="fa-solid fa-house pe-2"></i><h6 class="inline">Station address</h5>
+          <p class="ms-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, consectetur!</p>
+          <i class="fa-solid fa-envelope pe-2"></i> <p class="inline">Loremabc@123.com</p>
+          <div class="mt-2">
+            <i class="fa-solid fa-phone pe-2"></i><p class="inline">0123456789</p>
+            <p class="ms-4">0123456789</p>
+          </div>
+          <i class="fa-brands fa-facebook-f px-2"></i>
+          <i class="fa-brands fa-twitter px-2"></i>
+          <i class="fa-brands fa-instagram px-2"></i>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+          <h5 class="pb-3">USEFULL LINKS</h5>
+          <p>Home</p>
+          <p>About us</p>
+          <p>Contact</p>
+        </div>
+
+        <div class="col-lg-4">
+          <h5 class="pb-3">Lorem, ipsum dolor.</h5>
+          <ul>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>vel corrupti possimus architecto, dolorum </li>
+            <li>Lorem ipsum dolor sit, amet consectetur adipisicing </li>
+            <li>Lorem ipsum, dolor sit amet consectetur adipisicing</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+          </ul>
+        </div>
+
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="https://kit.fontawesome.com/1dbc5b03e6.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  </body>
+</html>

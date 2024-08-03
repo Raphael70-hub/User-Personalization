@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>News Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="imageslogo.png/">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,200&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/newFeed_styles.css">
+  </head>
+  <style>
+    :root {
+        --themeColor1: <%=themeColor1%>;
+        --themeColor2: <%=themeColor2%>;
+        --themeColor3: <%=themeColor3%>;
+
+        --slideImage1: url(<%=slideImage1%>);
+        --slideImage2: url(<%=slideImage2%>);
+        --slideImage3: url(<%=slideImage3%>);
+        --carouselControlColor: url(<%=carouselControlColor%>);
+
+        --font: <%=font%>;
+        --fontSize: <%=fontSize%>;
+        --font_family: <%=font_family%>;
+
+        /* --slideText1: url(<%=slideText1%>);
+        --slideText2: url(<%=slideText2%>);
+        --slideText3: url(<%=slideText3%>); */
+    }
+
+    *  p{
+      font-family: var(--font_family) !important;
+      font-size: var(--fontSize) !important;
+    }
+
+    .navbar-nav li a{
+        font-weight: 900 !important;
+        color: var(--themeColor3) !important;
+    }
+
+
+    .active, .navbar a:hover{
+        color: white;
+    }
+
+    .btn{
+        background-color: var(--themeColor3) !important;
+        color: white;
+    }
+
+    .border{
+        border: 10px solid var(--themeColor2) !important;
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    .noUnderline{
+        text-decoration: none !important;
+        color: grey;
+    }
+
+    .carousel-control-prev-icon { 
+      background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"); 
+    }
+
+    .carousel-control-next-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+    }
+
+    .carousel-item:first-child{
+        background-image: var(--slideImage1);
+        background-color: black;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    .carousel-item:nth-child(2){
+        background-image: var(--slideImage2);
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+
+    .carousel-item:last-child{
+        background-image: var(--slideImage3);
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .parent {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+
+    .image1 {
+      position: relative;
+      top: 0;
+      left: 0;
+      border: 5px solid var(--themeColor3);
+      border-radius: 10%;
+    }
+
+    .colorBorder {
+      border: 5px solid var(--themeColor3);
+      border-radius: 10%;
+    }
+
+    .image2 {
+      position: absolute;
+      top: 30px;
+      left: 50px;
+    }
+
+    .about-service{
+      border-radius: 5%;
+      font-family: 'Raleway', sans-serif;
+      padding: 3rem;
+      color: #fff;
+      background-color: var(--themeColor2);
+    }
+
+    footer{
+        color: white;
+        background-color: var(--themeColor1);
+        padding: 2rem 7rem;
+    }
+
+    footer p, footer li{
+        font-size: small;
+    }
+
+    .footer-image-link{
+        color: white;
+    }
+
+    .theme3Color{
+      color: var(--themeColor2);
+    }
+
+    @media screen and (max-width: 991px) {
+    .carousel-caption{
+      visibility: hidden;
+    }
+    .carousel-item{
+        height: 250px;
+    }  
+    .carousel-item:first-child{
+      background-image: var(--slideImage1);
+      background-repeat: no-repeat;
+    }
+
+    .carousel-item:nth-child(2){
+        background-image: var(--slideImage2);
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    .carousel-item:nth-child(3){
+        background-image: var(--slideImage3);
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    }
+
+  </style>
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-lg" style="background-color: var(--themeColor1);">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><img src="images/logo.png" class="logo" alt="logo"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <i class="fa-solid fa-bars navbar-icon"></i>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                  <!-- <li class="nav-item">
+                    <a class="nav-link active" style="color: var(--themeColor2);"  aria-current="page" href="/">Home</a>
+                  </li> -->
+                  <li class="nav-item">
+                    <a class="nav-link" href="/search/<%=q%>">Search</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa-solid fa-user dropdown-icon"></i><%=username%>
+                    </a>
+                    <!-- <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user dropdown-icon"></i> My Account</a></li>
+                      <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-box dropdown-icon"></i> Logout</a></li> -->
+                    </ul>
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="7000">
+                    <!-- <img src="images/samsung-galaxy.jpg" class="d-block w-100" alt="samsung-galaxy"> -->
+                    <div class="image-overlay">
+                        <div class="carousel-caption">
+                            <h2><%=slideText1%></h2>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="carousel-item" data-bs-interval="7000">
+                    <!-- <img src="images/iphone & ipad.jpg" class="d-block w-100" alt="iphone & ipad"> -->
+                    <div class="image-overlay">
+                        <div class="carousel-caption">
+                            <h2><%=slideText2%></h2>
+                        </div>
+                    </div>
+                </div>
+                
+              <div class="carousel-item" data-bs-interval="7000">
+                <!-- <img src="images/headphones.jpg" class="d-block w-100" alt="headphones"> -->
+                <div class="image-overlay">
+                    <div class="carousel-caption">
+                        <h2><%=slideText3%></h2>
+                    </div>
+                </div>
+
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </header>
+
+    <main>
+        <div class="all-categories text-center">
+            <hr class="half-hr"> <h2 class="category-heading theme3Color">Personalized Feed</h2> <hr class="half-hr">
+        </div>
+
+        <div class="ms-4">
+            <div class="row">
+              <% interests.forEach((interest, index) => { %>
+                <div class="card mx-3 my-3" style="width: 18rem;">
+                  <img src="<%= interest.urlToImage %>" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= interest.title %></h5>
+                    <p class="card-text"><%= interest.description %></p>
+                    <p class="card-text">Author: <%= interest.author %></p>
+                    <a href="<%= interest.url %>" target="_blank" class="btn btn-primary">View</a>
+                    <p class="card-text"><%= interest.publishedAt %></p>
+                  </div>
+                </div>
+              <% }) %>
+              
+            </div>
+        </div>
+
+      <div class="container my-5 text-center about-service">
+        <h2>Top Stories: Unraveling Today's Headlines!</h2>
+        <p>
+          Experience the richness of diverse cultures and perspectives through our thought-provoking feature stories. Engage with narratives that go beyond the headlines, offering a deeper understanding of the world we live in.
+        </p>
+      </div>
+
+    </main>
+
+    <footer>
+      <div class="container row">
+        <div class="col-lg-4 mb-4">
+          <img src="images/logo.png" class="logo footer-logo mb-5" alt="logo">
+          <i class="fa-solid fa-house pe-2"></i><h6 class="inline">Station address</h5>
+          <p class="ms-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, consectetur!</p>
+          <i class="fa-solid fa-envelope pe-2"></i> <p class="inline">Loremabc@123.com</p>
+          <div class="mt-2">
+            <i class="fa-solid fa-phone pe-2"></i><p class="inline">0123456789</p>
+            <p class="ms-4">0123456789</p>
+          </div>
+          <i class="fa-brands fa-facebook-f px-2"></i>
+          <i class="fa-brands fa-twitter px-2"></i>
+          <i class="fa-brands fa-instagram px-2"></i>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+          <h5 class="pb-3">USEFULL LINKS</h5>
+          <p>Home</p>
+          <p>About us</p>
+          <p>Contact</p>
+        </div>
+
+        <div class="col-lg-4">
+          <h5 class="pb-3">Lorem, ipsum dolor.</h5>
+          <ul>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>vel corrupti possimus architecto, dolorum </li>
+            <li>Lorem ipsum dolor sit, amet consectetur adipisicing </li>
+            <li>Lorem ipsum, dolor sit amet consectetur adipisicing</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+          </ul>
+        </div>
+
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="https://kit.fontawesome.com/1dbc5b03e6.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  </body>
+</html>
